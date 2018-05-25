@@ -1,0 +1,7 @@
+# Build
+bin/*
+out/*
+pkg/*
+
+/.idea/
+/*.json
