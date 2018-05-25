@@ -92,7 +92,7 @@ func slackEmojiFunction(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	c.GetEmojiFiles(el, cmd.OutOrStdout())
+	c.GetEmojiFiles(el, o.OptOutputDir, cmd.OutOrStdout())
 
 	cmd.OutOrStdout()
 
@@ -132,7 +132,7 @@ func (c *SlackEmojisClient) GetEmojiList(token string) (*EmojiList, error) {
 	return el, nil
 }
 
-func (c *SlackEmojisClient) GetEmojiFiles(el *EmojiList, w io.Writer) error {
+func (c *SlackEmojisClient) GetEmojiFiles(el *EmojiList, outputDir string, w io.Writer) error {
 	if el.Ok {
 		var res2 *http.Response
 		var file *os.File
@@ -143,7 +143,7 @@ func (c *SlackEmojisClient) GetEmojiFiles(el *EmojiList, w io.Writer) error {
 				res2, _ = c.client.Do(req2)
 
 				filename := fmt.Sprintf("%s%s", key, value[strings.LastIndex(value, "."):])
-				file, err := os.Create(fmt.Sprintf("%s/%s", o.OptOutputDir, filename))
+				file, err := os.Create(fmt.Sprintf("%s/%s", outputDir, filename))
 				if err != nil {
 					return err
 				}
