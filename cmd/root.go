@@ -1,14 +1,14 @@
 package cmd
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"fmt"
-	"net/http"
-	"encoding/json"
-	"io/ioutil"
-	"os"
 	"io"
+	"io/ioutil"
+	"net/http"
+	"os"
 	"strings"
 	"time"
 )
@@ -48,10 +48,10 @@ func newRootCmd() *cobra.Command {
 	)
 
 	type EmojiList struct {
-		Ok      bool `json:"ok"`
+		Ok      bool              `json:"ok"`
 		Emoji   map[string]string `json:"emoji"`
-		CacheTs string `json:"cache_ts"`
-		Error   string `json:"error"`
+		CacheTs string            `json:"cache_ts"`
+		Error   string            `json:"error"`
 	}
 
 	cmd := &cobra.Command{

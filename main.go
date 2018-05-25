@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/keitaro1020/slack-emojis/cmd"
 	"os"
-	"fmt"
 )
 
 func main() {
