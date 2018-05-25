@@ -115,7 +115,7 @@ func newRootCmd() *cobra.Command {
 			return nil
 		},
 		SilenceErrors: true,
-		SilenceUsage:  true,
+		SilenceUsage:  false,
 	}
 	cmd.Flags().StringVarP(&o.OptToken, "token", "t", "", "slack authentication token [required]")
 	cmd.Flags().StringVarP(&o.OptOutputDir, "output", "o", "./", "emoji output directory (default current directory)")
