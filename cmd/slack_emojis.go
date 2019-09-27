@@ -148,8 +148,10 @@ func (c *SlackEmojisClient) GetEmojiFiles(el *EmojiList, outputDir string, w io.
 					return err
 				}
 
-				io.Copy(file, res2.Body)
-				fmt.Fprintf(w, "download: %s\n", filename)
+				if res2 != nil {
+					io.Copy(file, res2.Body)
+					fmt.Fprintf(w, "download: %s\n", filename)
+				}
 				time.Sleep(1 * time.Second)
 			}
 		}
